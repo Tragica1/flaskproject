@@ -42,22 +42,22 @@
                     {% for r in recipes %}
                         <div class="col">
                             <div class="card shadow-sm">
-                                <img src="{{ r.photo.url }}" class="bd-placeholder-img card-img-top" width="100%"
+                                <img src="{{ r.photoLink }}" class="bd-placeholder-img card-img-top" width="100%"
                                      height="225" xmlns="http://www.w3.org/2000/svg" role="img"
                                      aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
                                      focusable="false">
                                 <rect width="100%" height="100%" fill="#55595c"/>
                                 </img>
                                 <div class="card-body">
-                                    <h3>{{ r.title }}</h3>
-                                    <p class="card-text">{{ r.content }}</p>
-                                    <p class="card-text">
-                                    <h5>Энергетическая ценность:</h5>
-                                    <li>Калории: {{ r.calories }} ккл</li>
-                                    <li>Жиры: {{ r.fats }} грамм</li>
-                                    <li>Белки: {{ r.proteins }} грамм</li>
-                                    <li>Углеводы: {{ r.carbohydrates }} грамм</li>
-                                    </p>
+                                    <h3>{{ r.name }}</h3>
+                                    <p class="card-text">{{ r.title }}</p>
+{#                                    <p class="card-text">#}
+{#                                    <h5>Энергетическая ценность:</h5>#}
+{#                                    <li>Калории: {{ r.calories }} ккл</li>#}
+{#                                    <li>Жиры: {{ r.fats }} грамм</li>#}
+{#                                    <li>Белки: {{ r.proteins }} грамм</li>#}
+{#                                    <li>Углеводы: {{ r.carbohydrates }} грамм</li>#}
+{#                                    </p>#}
                                     <h5>Рецепт:</h5>
                                     <p class="text-left">{{ r.recipe }}</p>
                                     <div class="d-flex justify-content-between align-items-center">
