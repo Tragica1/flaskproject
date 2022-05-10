@@ -36,54 +36,49 @@
         <h3 class="text-center">Добавление рецепта</h3>
         <p class="text-center">Здесь вы можете добавть свой рецепт на сайт.</p>
         <div class="album px-md-5 py-5 bg-light">
-            <form action="/addrecipe/" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
+            <form method="POST" enctype="multipart/form-data">
                 <div class="form-group row mb-3">
-                    <label class="col- col-sm-2 col-form-label">{{ form.title.label }}:</label>
+                    <label class="col- col-sm-2 col-form-label">Название:</label>
                     <div class="col-sm-8">
-                        {{ form.title }}
+                        <input type="text" name="name" class="form-control" id="floatingInput"
+                               placeholder="Введите название">
                     </div>
                 </div>
                 <div class="form-group row mb-3">
-                    <label class="col-sm-2 col-form-label">{{ form.content.label }}:</label>
+                    <label class="col-sm-2 col-form-label">Фотография:</label>
                     <div class="col-sm-8">
-                         {{ form.content }}
+                        <input type="file" name="photo" class="form-control" id="floatingInput"
+                               placeholder="Добавте фотографию блюда">
                     </div>
                 </div>
                 <div class="form-group row mb-3">
-                    <label class="col-sm-2 col-form-label">{{ form.recipe.label }}:</label>
+                    <label class="col-sm-2 col-form-label">Краткое описание:</label>
                     <div class="col-sm-8">
-                          {{ form.recipe }}
+                        <textarea type="text" name="title" class="form-control" id="floatingInput"
+                                  placeholder="Расскажите немного о блюде"></textarea>
                     </div>
                 </div>
                 <div class="form-group row mb-3">
-                    <label class="col-sm-2 col-form-label">{{ form.photo.label }}:</label>
+                    <label class="col-sm-2 col-form-label">Рецепт:</label>
                     <div class="col-sm-8">
-                        {{ form.photo }}
+                        <textarea type="text" name="recipe" class="form-control" id="floatingInput"
+                                  placeholder="Напишите рецепт блюда"></textarea>
                     </div>
                 </div>
                 <div class="form-group row mb-3">
-                    <label class="col-sm-2 col-form-label">{{ form.calories.label }}:</label>
                     <div class="col-sm-8">
-                        {{ form.calories }}
                     </div>
                 </div>
                 <div class="form-group row mb-3">
-                    <label class="col-sm-2 col-form-label">{{ form.proteins.label }}:</label>
                     <div class="col-sm-8">
-                        {{ form.proteins }}
                     </div>
                 </div>
                 <div class="form-group row mb-3">
-                    <label class="col-sm-2 col-form-label">{{ form.fats.label }}:</label>
                     <div class="col-sm-8">
-                        {{ form.fats }}
                     </div>
                 </div>
                 <div class="form-group row mb-3">
-                    <label class="col-sm-2 col-form-label">{{ form.carbohydrates.label }}:</label>
                     <div class="col-sm-8">
-                        {{ form.carbohydrates }}
                     </div>
                 </div>
                 <button type="submit" class="btn btn-outline-success">Добавить</button>
