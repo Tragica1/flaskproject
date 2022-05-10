@@ -17,26 +17,23 @@
 <body>
 <div class="text-center mt-5">
     <main class="form-signin">
-        <form style="max-width: 300px; margin: auto;">
+        <form method="POST" action="" style="max-width: 300px; margin: auto;">
             <img src="data:image/png;base64,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"/>
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="floatingPassword"
+                       placeholder="Password">
                 <label for="floatingPassword">Password</label>
             </div>
-
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <a href="/registration" >Registration</a>
         </form>
+
     </main>
 </div>
 </body>
