@@ -1,72 +1,250 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+
+    <!-- Основные -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="sidebars.css" rel="stylesheet">
-  <title>Document</title>
+
+    <!-- Template Main CSS File -->
+    <link href="../static/css/style.css" rel="stylesheet">
+
+
+    <!-- Шрифт -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
-<div class="container-fluid">
-<nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample">
-      <i class="bi bi-egg-fried"></i>
-      KUХНЯ
-    </a>
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+    <div class="container-fluid">
+        <nav class="navbar navbar-light" style="background: #fcebe3 !important;">
+            <div class="container-fluid">
+                <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample"
+                    aria-controls="offcanvasExample">
+                    <img src="../static/icon/icon-navbar.svg">
+                    KUХНЯ
+                </a>
+            </div>
+        </nav>
 
-    {% include 'menu.html' %}
-    <hr class="featurette-divider">
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">Наша команда.</h2>
-        <p class="lead">Здесь вы найдете информацию о нашей команде.</p>
-          <a class="btn btn-outline-secondary" href="/about">Перейти к разделу</a>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        {% include 'menu.html' %}
 
-      </div>
+        <section id="hero" class="d-flex align-items-center">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                        <h1>KUXНЯ</h1>
+                        <h2>Сайт где вы надете самые лучшие рецепты и рекомендации к питанию</h2>
+                    </div>
+                    <div class="col-lg-6 order-1 order-lg-2 hero-img">
+                        <img src="../static/icon/img1-Kuxny.jpg" class="img-fluid animated" alt="" style="border-radius: 50px;">
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main id="main">
+        <section id="services" class="services section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <p>Почему мы?</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box" style="width: 100%;">
+                            <div class="icon"><img src="../static/icon/icon_kuxni.svg" class="img-fluid" alt="" data-aos="zoom-in" style="width: 64px;"></div>
+                            <hr>
+                            <h4 class="title"><a href="">Широкий выбор кухнь</a></h4>
+                            <p class="description">У нас можно найти национальные блюда разных стран</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon-box" style="width: 100%;">
+                            <div class="icon"><img src="../static/icon/podrobny_recipe.svg" class="img-fluid" alt=""
+                                    data-aos="zoom-in" style="width: 64px;"></div>
+                            <hr>
+                            <h4 class="title"><a href="">Подробный рецепт</a></h4>
+                            <p class="description">Мы расписываем подробно последовательность шагов</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="icon-box" style="width: 100%;">
+                            <div class="icon"><img src="../static/icon/sovety_pitaniy.svg" class="img-fluid" alt="" data-aos="zoom-in" style="width: 64px;"></div>
+                            <hr>
+                            <h4 class="title"><a href="">Крутые советы питания</a></h4>
+                            <p class="description">Вы можете найти классные стать по питанию</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="icon-box" style="width: 100%;">
+                            <div class="icon"><img src="../static/icon/otlichiya.png" class="img-fluid" alt="" data-aos="zoom-in" style="width: 64px;"></div>
+                            <hr>
+                            <h4 class="title"><a href="">Отличительная черта</a></h4>
+                            <p class="description">Отличием от других является публиликация своих рецептов на этом сайте</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Рецепты</h2>
+                    <p>Популярные рецепты</p>
+                </div>
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="../static/icon/food.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-links">
+                                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>App 1</h4>
+                                <p>App</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <div class="portfolio-wrap">
+                            <img src="../static/icon/food.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-links">
+                                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Web 3</h4>
+                                <p>Web</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="../static/icon/food.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-links">
+                                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>App 2</h4>
+                                <p>App</p>
+                            </div>
+                        </div>
+                    </div>
+
+            <!-- ======= Team Section ======= -->
+            <section id="team" class="team">
+                <div class="container">
+
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Команда</h2>
+                        <p>Наша команда</p>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-xl-4 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="member" style="border-radius: 30px;">
+                                <img src="../static/about/Zhora.jpg" class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>Самонин Георгий</h4>
+                                        <span>Team-Lead</span>
+                                    </div>
+                                    <div class="social">
+                                        <a href="https://www.instagram.com/gsamonin/"><i class="bi bi-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100" >
+                            <div class="member" style="border-radius: 30px;">
+                                <img src="../static/about/Max.jpg" class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>Одиноков Максим</h4>
+                                        <span>Backend разработчик</span>
+                                    </div>
+                                    <div class="social">
+                                        <a href="https://www.instagram.com/glad_t0_see/"><i class="bi bi-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="member" style="border-radius: 30px;">
+                                <img src="../static/about/Dan.jpg" class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>Егоркин Данила</h4>
+                                        <span>Frontend разработчик</span>
+                                    </div>
+                                    <div class="social">
+                                        <a href="https://www.instagram.com/egorkin_danil/"><i class="bi bi-instagram"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </main>
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+            <div class="container py-4">
+                <div class="copyright">
+                    &copy; Егоркин and Одиноков and Самонин <strong><span>Company</span></strong>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <hr class="featurette-divider">
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
 
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Рецепты</h2>
-        <p class="lead">Здесь вы найдете информацию о приготовлении разных блюд.</p>
-          <a class="btn btn-outline-secondary" href="/food">Перейти к разделу</a>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">Выбор ресторана.</h2>
-        <p class="lead">В этом разделе вы можете выбрать ресторан.</p>
-          <a class="btn btn-outline-secondary" href="/map">Перейти к разделу</a>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
-      </div>
-    </div>
-    </div>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
 </body>
+
 </html>
