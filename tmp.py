@@ -1,4 +1,4 @@
-import click
+
 from config import db
 from models import Users
 from werkzeug.security import generate_password_hash

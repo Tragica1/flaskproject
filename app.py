@@ -14,6 +14,11 @@ from werkzeug.utils import secure_filename
 def index():
     return render_template('index.html')
 
+@app.route('/recipe')
+def recipe():
+    return render_template('recipe.html')#Приготовление блюда
+
+
 
 @app.route('/about')
 def about():
