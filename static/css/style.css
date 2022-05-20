@@ -144,7 +144,7 @@ body {
 
 .services .icon-box:hover {
     transform: translateY(-5px);
-    border-color: #ef7f4d;
+    border-color: #ecf542;
 }
 
 .services .icon i {
@@ -246,7 +246,7 @@ section {
     display: block;
     width: 60px;
     height: 2px;
-    background: #eb5d1e;
+    background: #ecf542;
     bottom: 0;
     left: calc(50% - 30px);
 }
@@ -455,7 +455,7 @@ section {
 # Team
 --------------------------------------------------------------*/
 .team {
-    background: #fff;
+    background: #fef8f5;
     padding: 60px 0;
 }
 
@@ -551,7 +551,7 @@ section {
     padding: 0 0 30px 0;
     color: #212529;
     font-size: 14px;
-    background: #fef8f5;
+    background: #fff;
 }
 
 #footer .footer-newsletter {
