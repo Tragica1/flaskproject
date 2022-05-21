@@ -61,12 +61,14 @@
                 {% for r in recipes %}
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                     <div class="portfolio-wrap">
-                        <img src="{{ r.photoLink }}" class="img-fluid" alt="">
+                        <img src="../{{ r.photoLink }}" class="img-fluid" alt="" style="width:100%">
                         <div class="portfolio-links">
                             <a href="/recipe/{{ r.id }}" ><i class="bi bi-link"></i></a>
                         </div>
                         <div class="portfolio-info">
                             <h4>{{ r.name }}</h4>
+                            <br>
+                            <br>
                             <br>
                             <br>
                             <div class="portfolio-links">
