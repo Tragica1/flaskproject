@@ -1,7 +1,7 @@
 import os
 
+# from PIL import Image
 from config import db, app
-from flask import Flask, render_template
 from models import Users, Recipes
 from flask import Flask, render_template, session, redirect, url_for, abort, request, flash
 from flask_login import login_user, login_required, logout_user, current_user
@@ -14,10 +14,11 @@ from werkzeug.utils import secure_filename
 def index():
     return render_template('index.html')
 
-@app.route('/recipe')
-def recipe():
-    return render_template('recipe.html')#Приготовление блюда
 
+@app.route('/recipe/<id>')
+def recipe(id):
+    recipe = Recipes.query.filter_by(id=id).first()
+    return render_template('recipe.html', recipe=recipe)  # Приготовление блюда
 
 
 @app.route('/about')
@@ -42,8 +43,10 @@ def food():
 
 
 @app.route('/favorites')
+@login_required
 def favorites():
-    return render_template('favorites.html')
+    user = Users.query.filter_by(id=current_user.id).first()
+    return render_template('favorites.html', favorites=user.favorites)
 
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -73,15 +76,28 @@ def addrecipe():
         file = request.files['photo']
         title = request.form.get('title')
         recipe = request.form.get('recipe')
+        calories = request.form.get('calories')
+        fats = request.form.get('fats')
+        proteins = request.form.get('proteins')
+        carbohydrates = request.form.get('carbohydrates')
         if not (name or title or recipe) or file.filename == '':
             flash('Не все поля заполнены')
+            return redirect('addrecipe')
+        elif not (calories or fats or proteins or carbohydrates):
+            flash('Не введена информация о пищевой ценности')
             return redirect('addrecipe')
         else:
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            # img = Image.open(filename)
+            # width = 400
+            # height = 250
+            # resized_img = img.resize((width, height), Image.ANTIALIAS)
+            # resized_img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             photoLink = str((os.path.join(app.config['UPLOAD_FOLDER'], filename)))
             user = Users.query.filter_by(id=current_user.id).first()
-            new_recipe = Recipes(name=name, photoLink=photoLink, title=title, recipe=recipe)
+            new_recipe = Recipes(name=name, photoLink=photoLink, title=title, recipe=recipe, calories=calories,
+                                 fats=fats, proteins=proteins, carbohydrates=carbohydrates)
             if user.added is None:
                 tmp = []
             else:
@@ -90,6 +106,7 @@ def addrecipe():
             user.added = tmp
             db.session.add(new_recipe, user)
             db.session.commit()
+            return redirect('food')
     return render_template('addrecipe.html')
 
 
@@ -134,7 +151,7 @@ def registration():
             db.session.commit()
             login_user(new_user)
             return redirect(url_for('account'))
-    return render_template('registration.html')
+    return render_template('signin.html')
 
 
 if __name__ == '__main__':

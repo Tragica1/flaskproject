@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
+    <title>Рецепты</title>
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -63,7 +63,7 @@
                     <div class="portfolio-wrap">
                         <img src="{{ r.photoLink }}" class="img-fluid" alt="">
                         <div class="portfolio-links">
-                            <a href="/recipe"><i class="bi bi-link"></i></a>
+                            <a href="/recipe/{{ r.id }}" ><i class="bi bi-link"></i></a>
                         </div>
                         <div class="portfolio-info">
                             <h4>{{ r.name }}</h4>

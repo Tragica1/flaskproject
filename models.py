@@ -26,8 +26,10 @@ class Recipes(db.Model):
     photoLink = db.Column(db.String(500), nullable=False)
     title = db.Column(db.String(300), nullable=False)
     recipe = db.Column(db.Text, nullable=False)
+    calories = db.Column(db.Integer, nullable=False)
+    fats = db.Column(db.Integer, nullable=False)
+    proteins = db.Column(db.Integer, nullable=False)
+    carbohydrates = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return f'recipes {self.id}, {self.name}'
-
-

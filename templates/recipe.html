@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
+    <title>{{ recipe.name }}</title>
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -18,10 +18,10 @@
 
     <!-- Основные -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="sidebars.css" rel="stylesheet">
 
@@ -38,82 +38,80 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <nav class="navbar navbar-light" style="background: #fcebe3 !important;">
-            <div class="container-fluid">
-                <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample"
-                    aria-controls="offcanvasExample">
-                    <img src="../static/icon/icon-navbar.svg">
-                    KUХНЯ
-                </a>
-            </div>
-        </nav>
+<div class="container-fluid">
+    <nav class="navbar navbar-light" style="background: #fcebe3 !important;">
+        <div class="container-fluid">
+            <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample"
+               aria-controls="offcanvasExample">
+                <img src="../static/icon/icon-navbar.svg">
+                KUХНЯ
+            </a>
+        </div>
+    </nav>
 
-        {% include 'menu.html' %}
-        <main id="main">
-            <div class="container">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-8">
-                        <div class="portfolio-details-slider swiper">
-                            <div class="portfolio-wrap">
-                                <img src="{{ r.photoLink }}" class="img-fluid" alt="">
-                            </div>
-                            <div class="swiper-pagination"></div>
+    {% include 'menu.html' %}
+    <main id="main">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper">
+                        <div class="portfolio-wrap">
+                            <img src="{{ recipe.photoLink }}" class="img-fluid" alt="">
                         </div>
+                        <div class="swiper-pagination"></div>
                     </div>
+                </div>
 
-                    <div class="col-lg-4">
-                        <div class="portfolio-info">
-                            <h3>Приготовление блюда:</h3>
-                            <p>{{ r.title }}</p>
-                            <ul>
-                                <li><strong>Калории: {{ r.calories }} ккл</strong></li>#}
-                                <li><strong>Жиры: {{ r.fats }} грамм</strong></li>#}
-                                <li><strong>Белки: {{ r.proteins }} грамм</strong></li>#}
-                                <li><strong>Углеводы: {{ r.carbohydrates }} грамм</strong><a href="#"></a></li>#}
-                            </ul>
-                        </div>
-                        <div class="portfolio-description">
-                            <h2>Рецепт:</h2>
-                            <p>
-                                {{ r.recipe }}
-                            </p>
-                        </div>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Добавить
-                                в
-                                избранное
-                            </button>
-                        </div>
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                        <h3>Приготовление блюда:</h3>
+                        <p>{{ recipe.title }}</p>
+                        <ul>
+                            <li><strong>Калории: {{ recipe.calories }} ккл</strong></li>
+                            <li><strong>Жиры: {{ recipe.fats }} грамм</strong></li>
+                            <li><strong>Белки: {{ recipe.proteins }} грамм</strong></li>
+                            <li><strong>Углеводы: {{ recipe.carbohydrates }} грамм</strong><a href="#"></a></li>
+                        </ul>
                     </div>
-
+                    <div class="portfolio-description">
+                        <h2>Рецепт:</h2>
+                        <p>
+                            {{ recipe.recipe }}
+                        </p>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Добавить
+                            в
+                            избранное
+                        </button>
+                    </div>
                 </div>
 
             </div>
-            </section>
-        </main>
-        <!-- ======= Footer ======= -->
-        <footer id="footer" style="background: #fef8f5;">
-            <div class="container py-4">
-                <div class="copyright">
-                    &copy; Егоркин and Одиноков and Самонин <strong><span>Company</span></strong>
-                </div>
+
+        </div>
+        </section>
+    </main>
+    <!-- ======= Footer ======= -->
+    <footer id="footer" style="background: #fef8f5;">
+        <div class="container py-4">
+            <div class="copyright">
+                &copy; Егоркин and Одиноков and Самонин <strong><span>Company</span></strong>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+</div>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+<!-- Vendor JS Files -->
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
 </body>
 
 </html>
