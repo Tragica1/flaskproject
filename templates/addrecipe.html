@@ -58,6 +58,15 @@
             </div>
             <div class="album px-md-5 py-5">
                 <form method="POST" enctype="multipart/form-data">
+                    {% with messeges = get_flashed_messages() %}
+                        {% if messeges %}
+                            {% for mes in messeges %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ mes }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                     <div class="form-group row mb-3">
                         <label class="col- col-sm-2 col-form-label">Название:</label>
                         <div class="col-sm-8">
