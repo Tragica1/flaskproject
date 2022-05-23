@@ -56,7 +56,8 @@
                 <div class="col-lg-8">
                     <div class="portfolio-details-slider swiper">
                         <div class="portfolio-wrap">
-                            <img src="../{{ recipe.photoLink }}" class="img-fluid" alt="ops image">
+                            <img src="../{{ recipe.photoLink }}" class="rounded float-left" width="700" height="500"
+                                 alt="ops image">
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -66,6 +67,7 @@
                     <div class="portfolio-info">
                         <h3>Приготовление блюда:</h3>
                         <p>{{ recipe.title }}</p>
+                        <h3>Пищевая ценность:</h3>
                         <ul>
                             <li><strong>Калории: {{ recipe.calories }} ккл</strong></li>
                             <li><strong>Жиры: {{ recipe.fats }} грамм</strong></li>
@@ -73,35 +75,40 @@
                             <li><strong>Углеводы: {{ recipe.carbohydrates }} грамм</strong><a href="#"></a></li>
                         </ul>
                     </div>
-                    <div class="portfolio-description">
-                        <h2>Рецепт:</h2>
-                        <p>
-                            {{ recipe.recipe }}
-                        </p>
-                    </div>
-                    {% if condition %}
-                        <form action="/recipe/{{ recipe.id }}" method="POST">
-                            <div class="btn-group">
-                                <button type="submit" class="btn btn-sm btn-outline-secondary">
-                                    Удалить из избранного
-                                </button>
-                            </div>
-                        </form>
-                    {% else %}
-                        <form action="/recipe/{{ recipe.id }}" method="POST">
-                            <div class="btn-group">
-                                <button type="submit" class="btn btn-sm btn-outline-secondary">
-                                    Добавить в избранное
-                                </button>
-                            </div>
-                        </form>
+                    {% if current_user.is_authenticated %}
+                        {% if condition %}
+                            <form action="/recipe/{{ recipe.id }}" method="POST">
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                        Удалить из избранного
+                                    </button>
+                                </div>
+                            </form>
+                        {% else %}
+                            <form action="/recipe/{{ recipe.id }}" method="POST">
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                        Добавить в избранное
+                                    </button>
+                                </div>
+                            </form>
+                        {% endif %}
                     {% endif %}
+                </div>
+                <div class="portfolio-description">
+                    <h3>Рецепт:</h3>
+                    {% for step in recipe.steps %}
+                        <h6><strong>Шаг {{ step[1] }}</strong></h6>
+                        <p>{{ step[0] }}</p>
+                    {% endfor %}
                 </div>
 
             </div>
 
         </div>
         </section>
+        <br>
+        <br>
     </main>
     <!-- ======= Footer ======= -->
     <footer id="footer" style="background: #fef8f5;">

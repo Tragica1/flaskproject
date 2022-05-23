@@ -6,12 +6,6 @@
             <img src="../static/icon/icon-navbar.svg" style="width: 32px;">
             <span class="visually-hidden">KUХНЯ</span>
         </a>
-        <li class="nav-item">
-            <a href="/home" class="nav-link py-3 border-bottom" aria-current="page" title="" data-bs-toggle="tooltip"
-               data-bs-placement="right" data-bs-original-title="Home">
-                <img src="../static/icon/book-bookmark-icon_34486.png" style="width: 32px;">
-            </a>
-        </li>
         <li>
             <a href="/about" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
                data-bs-placement="right" data-bs-original-title="About">
@@ -38,8 +32,8 @@
             <img src="{{ current_user.photoLink }}" alt="mdo" width="24" height="24" class="rounded-circle">
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-            <li><a class="dropdown-item" href="/favorites">Favorites</a></li>
             {% if current_user.is_authenticated %}
+            <li><a class="dropdown-item" href="/favorites">Favorites</a></li>
                 <li><a class="dropdown-item" href="/account">Profile</a></li>
                 <li><a class="dropdown-item" href="/addrecipe">Add recipe</a></li>
                 <li>
@@ -47,11 +41,6 @@
                 </li>
                 <li><a class="dropdown-item" href="/signout">Sign out</a></li>
             {% else %}
-                <li><a class="dropdown-item" href="/signin">Profile</a></li>
-                <li><a class="dropdown-item" href="/addrecipe">Add recipe</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
                 <li><a class="dropdown-item" href="/signin">Sign in</a></li>
             {% endif %}
         </ul>
