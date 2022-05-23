@@ -80,13 +80,14 @@ def added():
     user = Users.query.filter_by(id=current_user.id).first()
     if user.added is not None:
         tmp = user.added
+        count = len(user.added)
         res = []
         for t in tmp:
             tmp1 = Recipes.query.filter_by(id=t).first()
             res.append(tmp1)
-        return render_template('account.html', recipes=res, count=len(user.added))
+        return render_template('account.html', recipes=res, count=count)
     else:
-        return render_template('account.html', recipes=[])
+        return render_template('account.html', recipes=[], count=0)
 
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -115,18 +116,27 @@ def addrecipe():
         name = request.form.get('name')
         file = request.files['photo']
         title = request.form.get('title')
+        steps = request.form.getlist('steps')
         calories = request.form.get('calories')
         fats = request.form.get('fats')
         proteins = request.form.get('proteins')
         carbohydrates = request.form.get('carbohydrates')
-        if not (name or title) or file.filename == '':
-            flash('Не все поля заполнены')
+        if not name:
+            flash('Введите название рецепта')
             return redirect(url_for('addrecipe'))
-        elif not (calories or fats or proteins or carbohydrates):
+        elif not file.filename:
+            flash('Выберите фотограцию блюда')
+            return redirect(url_for('addrecipe'))
+        elif not title:
+            flash('Введите краткое описание')
+            return redirect(url_for('addrecipe'))
+        elif len(steps) <= 0:
+            flash('В рецепте должен быть минимум 1 шаг')
+            return redirect((url_for('addrecipe')))
+        elif calories == '0' or (fats == '0' and proteins == '0' and carbohydrates == '0'):
             flash('Не введена информация о пищевой ценности')
             return redirect(url_for('addrecipe'))
         else:
-            steps = request.form.getlist('steps')
             tmp = []
             i = 1
             res = []
