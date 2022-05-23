@@ -59,49 +59,41 @@
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
                 {% for r in recipes %}
-                <div class="col-6 col-sm-4 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                        <img src="../{{ r.photoLink }}" class="img-fluid" alt="" style="width:100%">
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                    <div class="portfolio-wrap" style="width: 400px;">
+                        <img src="../{{ r.photoLink }}"width="450" height="300" alt="">
                         <div class="portfolio-links">
                             <a href="/recipe/{{ r.id }}" ><i class="bi bi-link"></i></a>
                         </div>
                         <div class="portfolio-info">
                             <h4>{{ r.name }}</h4>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <div class="portfolio-links">
-                            <i class="bi bi-bookmark-star" id="follow"></i>
-                                <i class="bi bi-bookmark-check" id="follow"></i>
-                        </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </section>
-        </main>
-        <!-- ======= Footer ======= -->
-        <footer id="footer" style="background: #fef8f5;">
-            <div class="container py-4">
-                <div class="copyright">
-                    &copy; Егоркин and Одиноков and Самонин <strong><span>Company</span></strong>
-                </div>
+    </main>
+    <!-- ======= Footer ======= -->
+    <footer id="footer" style="background: #fef8f5;">
+        <div class="container py-4">
+            <div class="copyright">
+                &copy; Егоркин and Одиноков and Самонин <strong><span>Company</span></strong>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+</div>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+<!-- Vendor JS Files -->
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
 </body>
 
 </html>

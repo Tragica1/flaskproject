@@ -36,7 +36,6 @@
 
 
 </head>
-
 <body>
     <div class="container-fluid">
         <nav class="navbar navbar-light" style="background: #fcebe3 !important;">
@@ -57,16 +56,15 @@
                     <p>Здесь находятся ваши избранные.</p>
                 </div>
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                    {% for r in recipes %}
+                    {% for f in favorites %}
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="{{ r.photoLink }}" class="img-fluid" alt="">
+                        <div class="portfolio-wrap" style="width: 400px;">
+                            <img src="{{ f.photoLink }}" width="450" height="300" alt="">
                             <div class="portfolio-links">
-                                <a href="../html/food1.html" title="More Details"><i class="bi bi-link"></i></a>
+                                <a href="/recipe/{{ f.id }} " title="More Details"><i class="bi bi-link"></i></a>
                             </div>
                             <div class="portfolio-info">
-                                <h4>{{ r.name }}</h4>
+                                <h4>{{ f.name }}</h4>
                             </div>
                         </div>
                     </div>
@@ -74,15 +72,16 @@
                 </div>
             </section>
         </main>
-    </div>
-    <!-- ======= Footer ======= -->
-    <footer id="footer" style="background: #fef8f5;">
-        <div class="container py-4">
-            <div class="copyright">
-                &copy; Егоркин and Одиноков and Самонин <strong><span>Company</span></strong>
+        <!-- ======= Footer ======= -->
+        <footer id="footer" style="background: #fef8f5;">
+            <div class="container py-4">
+                <div class="copyright">
+                    &copy; Егоркин and Одиноков and Самонин <strong><span>Company</span></strong>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/aos/aos.js"></script>
@@ -95,5 +94,4 @@
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 </body>
-
 </html>

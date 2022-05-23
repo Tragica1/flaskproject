@@ -1,9 +1,8 @@
 import os
 
-# from PIL import Image
 from config import db, app
 from models import Users, Recipes
-from flask import Flask, render_template, session, redirect, url_for, abort, request, flash
+from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
@@ -15,10 +14,29 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/recipe/<id>')
+@app.route('/recipe/<id>', methods=['GET', 'POST'])
 def recipe(id):
+    condition = False
+    favs = Users.query.filter_by(id=current_user.id).first().favorites
+    if id in favs:
+        condition = True
+    if request.method == 'POST':
+        user = Users.query.filter_by(id=current_user.id).first()
+        if condition:
+            tmp = list(user.favorites)
+            tmp.remove(id)
+            user.favorites = tmp
+        else:
+            if user.favorites is None:
+                tmp = []
+            else:
+                tmp = list(user.favorites)
+            tmp.append(id)
+            user.favorites = tmp
+        db.session.add(user)
+        db.session.commit()
     recipe = Recipes.query.filter_by(id=id).first()
-    return render_template('recipe.html', recipe=recipe)  # Приготовление блюда
+    return render_template('recipe.html', recipe=recipe, condition=condition)
 
 
 @app.route('/about')
@@ -46,7 +64,30 @@ def food():
 @login_required
 def favorites():
     user = Users.query.filter_by(id=current_user.id).first()
-    return render_template('favorites.html', favorites=user.favorites)
+    if user.favorites is not None:
+        tmp = user.favorites
+        res = []
+        for t in tmp:
+            tmp1 = Recipes.query.filter_by(id=t).first()
+            res.append(tmp1)
+        return render_template('favorites.html', favorites=res)
+    else:
+        return render_template('favorites.html', favorites=[])
+
+
+@app.route('/account')
+@login_required
+def added():
+    user = Users.query.filter_by(id=current_user.id).first()
+    if user.added is not None:
+        tmp = user.added
+        res = []
+        for t in tmp:
+            tmp1 = Recipes.query.filter_by(id=t).first()
+            res.append(tmp1)
+        return render_template('account.html', recipes=res, count=len(user.added))
+    else:
+        return render_template('account.html', recipes=[])
 
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -89,22 +130,21 @@ def addrecipe():
         else:
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # img = Image.open(filename)
-            # width = 400
-            # height = 250
-            # resized_img = img.resize((width, height), Image.ANTIALIAS)
-            # resized_img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             photoLink = str((os.path.join(app.config['UPLOAD_FOLDER'], filename)))
-            user = Users.query.filter_by(id=current_user.id).first()
+
             new_recipe = Recipes(name=name, photoLink=photoLink, title=title, recipe=recipe, calories=calories,
                                  fats=fats, proteins=proteins, carbohydrates=carbohydrates)
+            db.session.add(new_recipe)
+            db.session.commit()
+            user = Users.query.filter_by(id=current_user.id).first()
+            recipe = Recipes.query.filter_by(id=new_recipe.id).first()
             if user.added is None:
                 tmp = []
             else:
                 tmp = list(user.added)
-            tmp.append(new_recipe.id)
+            tmp.append(recipe.id)
             user.added = tmp
-            db.session.add(new_recipe, user)
+            db.session.add(user)
             db.session.commit()
             return redirect('food')
     return render_template('addrecipe.html')
