@@ -25,7 +25,7 @@ class Recipes(db.Model):
     name = db.Column(db.String(30), nullable=False)
     photoLink = db.Column(db.String(500), nullable=False)
     title = db.Column(db.String(300), nullable=False)
-    recipe = db.Column(db.Text, nullable=False)
+    steps = db.Column(db.PickleType, nullable=False)
     calories = db.Column(db.Integer, nullable=False)
     fats = db.Column(db.Integer, nullable=False)
     proteins = db.Column(db.Integer, nullable=False)

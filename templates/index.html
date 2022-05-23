@@ -99,7 +99,7 @@
                                                    data-aos="zoom-in" style="width: 64px;"></div>
                             <hr>
                             <h4 class="title"><a>Поиск кафе и ресторанов</a></h4>
-                            <p class="description">Устали готовить - открой карту и выбери место для себя</p>
+                            <p class="description">Устал готовить - открой карту и выбери место для себя</p>
                         </div>
                     </div>
 
@@ -129,20 +129,20 @@
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
                     {% for r in recipes %}
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="../{{r.photoLink}}" class="img-fluid" alt="">
-                            <div class="portfolio-links">
-                                <a href="/recipe/{{ r.id }}" title="More Details"><i class="bi bi-link"></i></a>
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>{{ r.name }}</h4>
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                            <div class="portfolio-wrap">
+                                <img src="../{{ r.photoLink }}" width="450" height="300" alt="">
+                                <div class="portfolio-links">
+                                    <a href="/recipe/{{ r.id }}" title="More Details"><i class="bi bi-link"></i></a>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>{{ r.name }}</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
-
+            </div>
         </section>
 
         <!-- ======= Team Section ======= -->

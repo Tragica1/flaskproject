@@ -11,30 +11,34 @@ from werkzeug.utils import secure_filename
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    res = []
+    for i in range(1, 4):
+        res.append(Recipes.query.filter_by(id=i).first())
+    return render_template('index.html', recipes=res)
 
 
 @app.route('/recipe/<id>', methods=['GET', 'POST'])
 def recipe(id):
     condition = False
-    favs = Users.query.filter_by(id=current_user.id).first().favorites
-    if id in favs:
-        condition = True
-    if request.method == 'POST':
-        user = Users.query.filter_by(id=current_user.id).first()
-        if condition:
-            tmp = list(user.favorites)
-            tmp.remove(id)
-            user.favorites = tmp
-        else:
-            if user.favorites is None:
-                tmp = []
-            else:
+    if current_user.is_authenticated:
+        favs = Users.query.filter_by(id=current_user.id).first().favorites
+        if favs is not None and id in favs:
+            condition = True
+        if request.method == 'POST':
+            user = Users.query.filter_by(id=current_user.id).first()
+            if condition:
                 tmp = list(user.favorites)
-            tmp.append(id)
-            user.favorites = tmp
-        db.session.add(user)
-        db.session.commit()
+                tmp.remove(id)
+                user.favorites = tmp
+            else:
+                if user.favorites is None:
+                    tmp = []
+                else:
+                    tmp = list(user.favorites)
+                tmp.append(id)
+                user.favorites = tmp
+            db.session.add(user)
+            db.session.commit()
     recipe = Recipes.query.filter_by(id=id).first()
     return render_template('recipe.html', recipe=recipe, condition=condition)
 
@@ -47,11 +51,6 @@ def about():
 @app.route('/map')
 def map():
     return render_template('map.html')
-
-
-@app.route('/home')
-def home():
-    return render_template('home.html')
 
 
 @app.route('/food')
@@ -97,7 +96,7 @@ def account():
         file = request.files['photo']
         if file.filename == '':
             flash('Нет выбранного файла')
-            return redirect('account')
+            return redirect(url_for('account'))
         else:
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -116,23 +115,32 @@ def addrecipe():
         name = request.form.get('name')
         file = request.files['photo']
         title = request.form.get('title')
-        recipe = request.form.get('recipe')
         calories = request.form.get('calories')
         fats = request.form.get('fats')
         proteins = request.form.get('proteins')
         carbohydrates = request.form.get('carbohydrates')
-        if not (name or title or recipe) or file.filename == '':
+        if not (name or title) or file.filename == '':
             flash('Не все поля заполнены')
-            return redirect('addrecipe')
+            return redirect(url_for('addrecipe'))
         elif not (calories or fats or proteins or carbohydrates):
             flash('Не введена информация о пищевой ценности')
-            return redirect('addrecipe')
+            return redirect(url_for('addrecipe'))
         else:
+            steps = request.form.getlist('steps')
+            tmp = []
+            i = 1
+            res = []
+            for step in steps:
+                tmp.append(step)
+                tmp.append(i)
+                i += 1
+                res.append(tmp)
+                tmp = []
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             photoLink = str((os.path.join(app.config['UPLOAD_FOLDER'], filename)))
 
-            new_recipe = Recipes(name=name, photoLink=photoLink, title=title, recipe=recipe, calories=calories,
+            new_recipe = Recipes(name=name, photoLink=photoLink, title=title, steps=res, calories=calories,
                                  fats=fats, proteins=proteins, carbohydrates=carbohydrates)
             db.session.add(new_recipe)
             db.session.commit()
@@ -162,6 +170,7 @@ def signin():
             return redirect(url_for('index'))
         else:
             flash('Введены неверные данные')
+            return redirect(url_for('signin'))
     return render_template('signin.html')
 
 
@@ -182,8 +191,10 @@ def registration():
     if request.method == 'POST':
         if not (password1 or email or password1):
             flash('Не все поля заполнены')
+            return redirect(url_for('registration'))
         elif password1 != password2:
             flash('Пароли не совпадают')
+            return redirect(url_for('registration'))
         else:
             passwdHash = generate_password_hash(password1)
             new_user = Users(name=name, email=email, password=passwdHash)
