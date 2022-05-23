@@ -1,6 +1,6 @@
 /* Основные */
 
-a{
+a {
     font-family: 'Macondo', cursive;
     text-decoration: none;
 }
@@ -433,7 +433,7 @@ section {
     font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.portfolio-details .portfolio-info ul li + li {
     margin-top: 10px;
 }
 
@@ -767,8 +767,8 @@ h6 span {
     left: -9999px;
 }
 
-.checkbox:checked+label,
-.checkbox:not(:checked)+label {
+.checkbox:checked + label,
+.checkbox:not(:checked) + label {
     position: relative;
     display: block;
     text-align: center;
@@ -781,8 +781,8 @@ h6 span {
     background-color: #ffeba7;
 }
 
-.checkbox:checked+label:before,
-.checkbox:not(:checked)+label:before {
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before {
     position: absolute;
     display: block;
     width: 36px;
@@ -801,7 +801,7 @@ h6 span {
     transition: all 0.5s ease;
 }
 
-.checkbox:checked+label:before {
+.checkbox:checked + label:before {
     transform: translateX(44px) rotate(-270deg);
 }
 
@@ -853,7 +853,7 @@ h6 span {
     transform: rotateY(180deg);
 }
 
-.checkbox:checked~.card-3d-wrap .card-3d-wrapper {
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
     transform: rotateY(180deg);
 }
 
@@ -1010,8 +1010,6 @@ h6 span {
 }
 
 
-
-
 .logo {
     position: absolute;
     top: 30px;
@@ -1025,6 +1023,21 @@ h6 span {
     height: 26px;
     width: auto;
     display: block;
+}
+
+#follow {
+    color: #eb5d1e;
+    margin: 0 4px;
+    line-height: 0;
+    background-color: #fff;
+    padding-top: 6px;
+    padding-right: 1px;
+    border-radius: 50px;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    transition: 0.3s;
 }
 
 #follow{

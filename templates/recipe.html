@@ -79,12 +79,23 @@
                             {{ recipe.recipe }}
                         </p>
                     </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Добавить
-                            в
-                            избранное
-                        </button>
-                    </div>
+                    {% if condition %}
+                        <form action="/recipe/{{ recipe.id }}" method="POST">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                    Удалить из избранного
+                                </button>
+                            </div>
+                        </form>
+                    {% else %}
+                        <form action="/recipe/{{ recipe.id }}" method="POST">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                    Добавить в избранное
+                                </button>
+                            </div>
+                        </form>
+                    {% endif %}
                 </div>
 
             </div>
