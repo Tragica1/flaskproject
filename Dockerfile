@@ -3,7 +3,7 @@ FROM python:3.10.2
 # Устанавливаем рабочую директорию для проекта в контейнере
 WORKDIR /flaskProject
 # Скачиваем/обновляем необходимые библиотеки для проекта
-COPY requirements.txt /flaskProject
+COPY ../requirements.txt /flaskProject
 
 RUN pip install --upgrade pip -r requirements.txt
 
