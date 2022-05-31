@@ -45,67 +45,193 @@
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </section>
+<section id="module-models">
+<span id="models"></span><h1>Models<a class="headerlink" href="#module-models" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.Recipes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">Recipes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models.html#Recipes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.Recipes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс для сохранения рецептов</p>
+<dl class="simple">
+<dt>id<span class="classifier">int</span></dt><dd><p>id рецепта</p>
+</dd>
+<dt>name<span class="classifier">str</span></dt><dd><p>название рецепта</p>
+</dd>
+<dt>photoLink<span class="classifier">str</span></dt><dd><p>ссылка на фотографию блюда</p>
+</dd>
+<dt>title<span class="classifier">str</span></dt><dd><p>краткое описание рецепта</p>
+</dd>
+<dt>steps<span class="classifier">list</span></dt><dd><p>список шагов рецепта</p>
+</dd>
+<dt>calories<span class="classifier">int</span></dt><dd><p>кол-во калорий</p>
+</dd>
+<dt>fats<span class="classifier">int</span></dt><dd><p>кол-во жиров</p>
+</dd>
+<dt>proteins<span class="classifier">int</span></dt><dd><p>кол-во белков</p>
+</dd>
+<dt>carbohydrates<span class="classifier">int</span></dt><dd><p>кол-во углеводов</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.Users">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">Users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models.html#Users"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.Users" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс для сохранения пользователя</p>
+<dl class="simple">
+<dt>id<span class="classifier">int</span></dt><dd><p>id пользователя</p>
+</dd>
+<dt>name<span class="classifier">str</span></dt><dd><p>имя пользвателя</p>
+</dd>
+<dt>email<span class="classifier">str</span></dt><dd><p>email пользователя</p>
+</dd>
+<dt>photoLink<span class="classifier">str</span></dt><dd><p>ссылка на фотографию пользвателя</p>
+</dd>
+<dt>password<span class="classifier">str</span></dt><dd><p>пароль рользователя</p>
+</dd>
+<dt>favorites<span class="classifier">list</span></dt><dd><p>список избранных рецептов</p>
+</dd>
+<dt>added<span class="classifier">list</span></dt><dd><p>список добавленных рецептов</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="module-app">
 <span id="functions"></span><h1>Functions<a class="headerlink" href="#module-app" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="app.about">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">about</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#about"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.about" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки страницы о нас</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.account">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">account</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#account"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.account" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки страницы аккаунта</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.added">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">added</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#added"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.added" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки добавленных рецептов</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница, список рецептов, количество рецептов</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.addrecipe">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">addrecipe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#addrecipe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.addrecipe" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки добавления рецепта</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.favorites">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">favorites</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#favorites"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.favorites" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки страницы избранных</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница, список избранных рецептов</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.food">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">food</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#food"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.food" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки страницы рецептов</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница, список рецептов</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.index">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.index" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки главной страницы сайта</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.map">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.map" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки страницы карты</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.recipe">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">recipe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#recipe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.recipe" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки страницы рецепта</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – номер рецепта</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>html страница, список данных о рецепте, спец. условие</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.registration">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">registration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#registration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.registration" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки регистрации на сайте</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.signin">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">signin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#signin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.signin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки входа на сайт</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="app.signout">
 <span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">signout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/app.html#signout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#app.signout" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Функция обработки выхода из сайта</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>html страница</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 
