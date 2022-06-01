@@ -3,6 +3,26 @@ from flask_login import UserMixin
 
 
 class Users(db.Model, UserMixin):
+    """
+    Класс для сохранения пользователя
+
+    Атрибуты
+    ----------
+    id : int
+        id пользователя
+    name : str
+        имя пользвателя
+    email : str
+       email пользователя
+    photoLink : str
+        ссылка на фотографию пользвателя
+    password : str
+       пароль рользователя
+    favorites : list
+        список избранных рецептов
+    added : list
+        список добавленных рецептов
+    """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(30), nullable=False, unique=False)
@@ -21,6 +41,30 @@ def load_user(user_id):
 
 
 class Recipes(db.Model):
+    """
+    Класс для сохранения рецептов
+
+    Атрибуты
+    ----------
+    id : int
+        id рецепта
+    name : str
+        название рецепта
+    photoLink : str
+        ссылка на фотографию блюда
+    title : str
+       краткое описание рецепта
+    steps : list
+        список шагов рецепта
+    calories : int
+       кол-во калорий
+    fats : int
+        кол-во жиров
+    proteins : int
+        кол-во белков
+    carbohydrates : int
+        кол-во углеводов
+    """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     photoLink = db.Column(db.String(500), nullable=False)

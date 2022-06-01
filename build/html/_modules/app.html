@@ -45,6 +45,11 @@
 <div class="viewcode-block" id="index"><a class="viewcode-back" href="../index.html#app.index">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/index&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки главной страницы сайта</span>
+
+<span class="sd">    :return: html страница</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
         <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Recipes</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
@@ -53,6 +58,13 @@
 
 <div class="viewcode-block" id="recipe"><a class="viewcode-back" href="../index.html#app.recipe">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/recipe/&lt;id&gt;&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">recipe</span><span class="p">(</span><span class="nb">id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки страницы рецепта</span>
+
+<span class="sd">    :param id: номер рецепта</span>
+<span class="sd">    :type id: int</span>
+<span class="sd">    :return: html страница, список данных о рецепте, спец. условие</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">condition</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
         <span class="n">favs</span> <span class="o">=</span> <span class="n">Users</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">current_user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">favorites</span>
@@ -79,16 +91,31 @@
 
 <div class="viewcode-block" id="about"><a class="viewcode-back" href="../index.html#app.about">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/about&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">about</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки страницы о нас</span>
+
+<span class="sd">    :return: html страница</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;about.html&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="map"><a class="viewcode-back" href="../index.html#app.map">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/map&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">map</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки страницы карты</span>
+
+<span class="sd">    :return: html страница</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;map.html&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="food"><a class="viewcode-back" href="../index.html#app.food">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/food&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">food</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки страницы рецептов</span>
+
+<span class="sd">    :return: html страница, список рецептов</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">recipes</span> <span class="o">=</span> <span class="n">Recipes</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;food.html&#39;</span><span class="p">,</span> <span class="n">recipes</span><span class="o">=</span><span class="n">recipes</span><span class="p">)</span></div>
 
@@ -96,6 +123,11 @@
 <div class="viewcode-block" id="favorites"><a class="viewcode-back" href="../index.html#app.favorites">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/favorites&#39;</span><span class="p">)</span>
 <span class="nd">@login_required</span>
 <span class="k">def</span> <span class="nf">favorites</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки страницы избранных</span>
+
+<span class="sd">    :return: html страница, список избранных рецептов</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">Users</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">current_user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">favorites</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">favorites</span>
@@ -111,6 +143,11 @@
 <div class="viewcode-block" id="added"><a class="viewcode-back" href="../index.html#app.added">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/account&#39;</span><span class="p">)</span>
 <span class="nd">@login_required</span>
 <span class="k">def</span> <span class="nf">added</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки добавленных рецептов</span>
+
+<span class="sd">    :return: html страница, список рецептов, количество рецептов</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">Users</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">current_user</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">added</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">added</span>
@@ -127,6 +164,11 @@
 <div class="viewcode-block" id="account"><a class="viewcode-back" href="../index.html#app.account">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/account&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="nd">@login_required</span>
 <span class="k">def</span> <span class="nf">account</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки страницы аккаунта</span>
+
+<span class="sd">    :return: html страница</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
         <span class="n">file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;photo&#39;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">filename</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
@@ -146,6 +188,11 @@
 <div class="viewcode-block" id="addrecipe"><a class="viewcode-back" href="../index.html#app.addrecipe">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/addrecipe&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="nd">@login_required</span>
 <span class="k">def</span> <span class="nf">addrecipe</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки добавления рецепта</span>
+
+<span class="sd">    :return: html страница</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
         <span class="n">file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;photo&#39;</span><span class="p">]</span>
@@ -204,6 +251,11 @@
 
 <div class="viewcode-block" id="signin"><a class="viewcode-back" href="../index.html#app.signin">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/signin&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">signin</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки входа на сайт</span>
+
+<span class="sd">    :return: html страница</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
     <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
 
@@ -221,12 +273,22 @@
 <div class="viewcode-block" id="signout"><a class="viewcode-back" href="../index.html#app.signout">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/signout&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="nd">@login_required</span>
 <span class="k">def</span> <span class="nf">signout</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки выхода из сайта</span>
+
+<span class="sd">    :return: html страница</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">logout_user</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;signin&#39;</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="registration"><a class="viewcode-back" href="../index.html#app.registration">[docs]</a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/registration&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">registration</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Функция обработки регистрации на сайте</span>
+
+<span class="sd">    :return: html страница</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
     <span class="n">email</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)</span>
     <span class="n">password1</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;password1&#39;</span><span class="p">)</span>

@@ -11,6 +11,11 @@ from werkzeug.utils import secure_filename
 @app.route('/')
 @app.route('/index')
 def index():
+    """
+    Функция обработки главной страницы сайта
+
+    :return: html страница
+    """
     res = []
     for i in range(1, 4):
         res.append(Recipes.query.filter_by(id=i).first())
@@ -19,6 +24,13 @@ def index():
 
 @app.route('/recipe/<id>', methods=['GET', 'POST'])
 def recipe(id):
+    """
+    Функция обработки страницы рецепта
+
+    :param id: номер рецепта
+    :type id: int
+    :return: html страница, список данных о рецепте, спец. условие
+    """
     condition = False
     if current_user.is_authenticated:
         favs = Users.query.filter_by(id=current_user.id).first().favorites
@@ -45,16 +57,31 @@ def recipe(id):
 
 @app.route('/about')
 def about():
+    """
+    Функция обработки страницы о нас
+
+    :return: html страница
+    """
     return render_template('about.html')
 
 
 @app.route('/map')
 def map():
+    """
+    Функция обработки страницы карты
+
+    :return: html страница
+    """
     return render_template('map.html')
 
 
 @app.route('/food')
 def food():
+    """
+    Функция обработки страницы рецептов
+
+    :return: html страница, список рецептов
+    """
     recipes = Recipes.query.all()
     return render_template('food.html', recipes=recipes)
 
@@ -62,6 +89,11 @@ def food():
 @app.route('/favorites')
 @login_required
 def favorites():
+    """
+    Функция обработки страницы избранных
+
+    :return: html страница, список избранных рецептов
+    """
     user = Users.query.filter_by(id=current_user.id).first()
     if user.favorites is not None:
         tmp = user.favorites
@@ -77,6 +109,11 @@ def favorites():
 @app.route('/account')
 @login_required
 def added():
+    """
+    Функция обработки добавленных рецептов
+
+    :return: html страница, список рецептов, количество рецептов
+    """
     user = Users.query.filter_by(id=current_user.id).first()
     if user.added is not None:
         tmp = user.added
@@ -93,6 +130,11 @@ def added():
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
+    """
+    Функция обработки страницы аккаунта
+
+    :return: html страница
+    """
     if request.method == 'POST':
         file = request.files['photo']
         if file.filename == '':
@@ -112,6 +154,11 @@ def account():
 @app.route('/addrecipe', methods=['GET', 'POST'])
 @login_required
 def addrecipe():
+    """
+    Функция обработки добавления рецепта
+
+    :return: html страница
+    """
     if request.method == 'POST':
         name = request.form.get('name')
         file = request.files['photo']
@@ -170,6 +217,11 @@ def addrecipe():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
+    """
+    Функция обработки входа на сайт
+
+    :return: html страница
+    """
     email = request.form.get('email')
     password = request.form.get('password')
 
@@ -187,12 +239,22 @@ def signin():
 @app.route('/signout', methods=['GET', 'POST'])
 @login_required
 def signout():
+    """
+    Функция обработки выхода из сайта
+
+    :return: html страница
+    """
     logout_user()
     return redirect(url_for('signin'))
 
 
 @app.route('/registration', methods=['GET', 'POST'])
 def registration():
+    """
+    Функция обработки регистрации на сайте
+
+    :return: html страница
+    """
     name = request.form.get('name')
     email = request.form.get('email')
     password1 = request.form.get('password1')

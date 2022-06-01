@@ -19,6 +19,12 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+Models
+==================
+
+.. automodule:: models
+   :members:
+
 Functions
 ==================
 
